@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: learnk8s-test
+  name: learnk8s-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: learnk8s-test
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: learnk8s-test
+    spec:
+      containers:
+      - image: learnk8s-test:latest
+        name: learnk8s-test
+        imagePullPolicy: IfNotPresent
+        envFrom:
+          - configMapRef:
+              name: name-cm
+        resources: {}
+status: {}
